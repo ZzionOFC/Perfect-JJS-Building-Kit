@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sounds</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    background: rgb(15,15,15);
+    font-family: 'Finger Paint', cursive;
+    padding: 20px;
+  }
+
+  .item {
+    background: rgb(150,100,150);
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  h2 {
+    color: #ded400;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Jujutsu Kaisen Sound ids</h2>
+
+<div class="item">
+  <span>lorem123</span>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <span>ipsum456</span>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <span>test</span>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<a href="index.html">⬅ Back</a>
+
+<audio id="clickSound" src="myinstants.mp3"></audio>
+<audio id="hoverSound" src="hover.mp3"></audio>
+
+<script>
+let audioUnlocked = false;
+
+const clickSound = document.getElementById("clickSound");
+const hoverSoundEl = document.getElementById("hoverSound");
+
+clickSound.volume = 0.5;
+hoverSoundEl.volume = 0.3;
+
+function unlockAudio() {
+  if (!audioUnlocked) {
+
+    clickSound.play().then(() => {
+      clickSound.pause();
+      clickSound.currentTime = 0;
+    });
+
+    hoverSoundEl.play().then(() => {
+      hoverSoundEl.pause();
+      hoverSoundEl.currentTime = 0;
+    });
+
+    audioUnlocked = true;
+  }
+}
+
+function copyID(btn) {
+  const text = btn.previousElementSibling.innerText;
+
+  navigator.clipboard.writeText(text);
+
+  clickSound.currentTime = 0;
+  clickSound.play();
+
+  btn.innerText = "Copied";
+  setTimeout(() => btn.innerText = "Copy", 500);
+}
+
+function hoverSound() {
+  if (!audioUnlocked) return;
+
+  hoverSoundEl.currentTime = 0;
+  hoverSoundEl.play();
+}
+</script>
+
+</body>
+</html>
