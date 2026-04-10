@@ -16,9 +16,25 @@
   .item {
     background: rgb(150,100,150);
     padding: 10px;
-    margin: 10px 0;
+    margin: 8px 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    color: white;
+  }
+
+  .id {
+    color: #ded400;
+    font-family: monospace;
+    font-size: 12px;
   }
 
   button {
@@ -28,6 +44,13 @@
   h2 {
     color: #ded400;
   }
+
+  #search {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    font-family: 'Finger Paint', cursive;
+  }
 </style>
 </head>
 
@@ -35,22 +58,81 @@
 
 <h2>Jujutsu Kaisen Sound ids</h2>
 
+<input type="text" id="search" placeholder="Search name or ID..." oninput="filterList()">
+
 <div class="item">
-  <span>lorem123</span>
+  <div class="text">
+    <span class="name">JUDAS (0.75 Speed)</span>
+    <span class="id">118314578679702</span>
+  </div>
   <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
 </div>
 
 <div class="item">
-  <span>ipsum456</span>
+  <div class="text">
+    <span class="name">AIZO (START 50)</span>
+    <span class="id">128857183932211</span>
+  </div>
   <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
 </div>
 
 <div class="item">
-  <span>test</span>
+  <div class="text">
+    <span class="name">ThunderClap</span>
+    <span class="id">103590461924679</span>
+  </div>
   <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
 </div>
 
-<a href="index.html">⬅ Back</a>
+<div class="item">
+  <div class="text">
+    <span class="name">Shinjuku Themed Music</span>
+    <span class="id">1843530144</span>
+  </div>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <div class="text">
+    <span class="name">Delirium</span>
+    <span class="id">71149066332949</span>
+  </div>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <div class="text">
+    <span class="name">Limitless / Infinite Void</span>
+    <span class="id">16071901783</span>
+  </div>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <div class="text">
+    <span class="name">Your Battle Is My Battle</span>
+    <span class="id">15048731914</span>
+  </div>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <div class="text">
+    <span class="name">Hollow Purple</span>
+    <span class="id">80767112039125</span>
+  </div>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<div class="item">
+  <div class="text">
+    <span class="name">Yuji Rage</span>
+    <span class="id">72975253717108</span>
+  </div>
+  <button onclick="unlockAudio(); copyID(this)" onmouseenter="hoverSound()">Copy</button>
+</div>
+
+<a href="sounds.html">⬅ Back</a>
 
 <audio id="clickSound" src="myinstants.mp3"></audio>
 <audio id="hoverSound" src="hover.mp3"></audio>
@@ -66,7 +148,6 @@ hoverSoundEl.volume = 0.3;
 
 function unlockAudio() {
   if (!audioUnlocked) {
-
     clickSound.play().then(() => {
       clickSound.pause();
       clickSound.currentTime = 0;
@@ -82,9 +163,8 @@ function unlockAudio() {
 }
 
 function copyID(btn) {
-  const text = btn.previousElementSibling.innerText;
-
-  navigator.clipboard.writeText(text);
+  const id = btn.parentElement.querySelector(".id").innerText.trim();
+  navigator.clipboard.writeText(id);
 
   clickSound.currentTime = 0;
   clickSound.play();
@@ -98,6 +178,18 @@ function hoverSound() {
 
   hoverSoundEl.currentTime = 0;
   hoverSoundEl.play();
+}
+
+function filterList() {
+  const input = document.getElementById("search").value.toLowerCase();
+  const items = document.querySelectorAll(".item");
+
+  items.forEach(item => {
+    const name = item.querySelector(".name")?.innerText.toLowerCase() || "";
+    const id = item.querySelector(".id")?.innerText.toLowerCase() || "";
+
+    item.style.display = (name.includes(input) || id.includes(input)) ? "flex" : "none";
+  });
 }
 </script>
 
