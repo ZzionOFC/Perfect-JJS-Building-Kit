@@ -1,69 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lorem Ipsum - Placeholder Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+  <title>JJS Skill Builder</title>
+
   <style>
     body {
-      font-family: 'Finger Paint', cursive;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: #eee;
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
     }
-    header, footer {
+
+    header {
       text-align: center;
-      padding: 20px 0;
-      border-bottom: 1px solid #ddd;
+      margin-bottom: 30px;
     }
-    footer {
-      border-top: 1px solid #ddd;
-      border-bottom: none;
-      margin-top: 40px;
-      font-size: 0.9em;
+
+    h1 {
+      color: #a855f7;
     }
+
     nav a {
       margin: 0 10px;
+      color: #aaa;
       text-decoration: none;
-      color: #0066cc;
+    }
+
+    .box {
+      background: #1a1a1a;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    .id {
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    button {
+      background: #a855f7;
+      border: none;
+      padding: 6px 10px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #9333ea;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #777;
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <h1>Lorem Ipsum Dolor</h1>
-    <nav>
-      <a href="#">Domus</a>
-      <a href="#">De Nobis</a>
-      <a href="#">Opera</a>
-      <a href="#">Contactus</a>
-    </nav>
+    <h1>⚡ JJS Skill Builder</h1>
   </header>
 
   <main>
-    <section>
-      <h2>Vestibulum Ante Ipsum</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-      <p>
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </section>
 
-    <section>
-      <h2>Nulla Facilisi</h2>
-      <p>
-        Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.
-      </p>
-    </section>
+    <div class="box">
+      <h2>🎧 Sound IDs</h2>
+
+      <div class="item">
+        <span class="id">lorem123</span>
+        <button onclick="copyID(this)">Copiar</button>
+      </div>
+
+      <div class="item">
+        <span class="id">ipsum456</span>
+        <button onclick="copyID(this)">Copiar</button>
+      </div>
+
+    </div>
+
+    <div class="box">
+      <h2>🖼️ Image IDs</h2>
+
+      <div class="item">
+        <span class="id">dolor789</span>
+        <button onclick="copyID(this)">Copiar</button>
+      </div>
+
+    </div>
+
+    <div class="box">
+      <h2>🧩 Mesh IDs</h2>
+
+      <div class="item">
+        <span class="id">sit000</span>
+        <button onclick="copyID(this)">Copiar</button>
+      </div>
+
+    </div>
+
   </main>
 
   <footer>
-    <p>© MMXXVI Lorem Ipsum. Omnia iura reservantur.</p>
+    <p>Feito pra JJS builders ⚔️</p>
   </footer>
+
+  <script>
+    function copyID(button) {
+      const idText = button.parentElement.querySelector(".id").innerText;
+
+      navigator.clipboard.writeText(idText);
+
+      button.innerText = "Copiado!";
+      
+      setTimeout(() => {
+        button.innerText = "Copiar";
+      }, 1500);
+    }
+  </script>
+
 </body>
 </html>
