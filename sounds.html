@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sounds</title>
+
+<style>
+  body {
+    background: rgb(100,125,125);
+    font-family: Arial;
+    padding: 20px;
+  }
+
+  .item {
+    background: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  button {
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>🎧 Sound IDs</h2>
+
+<div class="item">
+  <span>lorem123</span>
+  <button onclick="copyID(this)">Copy</button>
+</div>
+
+<div class="item">
+  <span>ipsum456</span>
+  <button onclick="copyID(this)">Copy</button>
+</div>
+
+<a href="index.html">⬅ Back</a>
+
+<script>
+function copyID(btn) {
+  const text = btn.previousElementSibling.innerText;
+  navigator.clipboard.writeText(text);
+  btn.innerText = "Copied!";
+  setTimeout(() => btn.innerText = "Copy", 1500);
+}
+</script>
+
+</body>
+</html>
