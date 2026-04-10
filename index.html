@@ -1,141 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JJS Skill Builder</title>
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       background: #0f0f0f;
-      color: #eee;
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    header {
+      color: white;
       text-align: center;
-      margin-bottom: 30px;
+      padding-top: 50px;
     }
 
     h1 {
       color: #a855f7;
     }
 
-    nav a {
-      margin: 0 10px;
-      color: #aaa;
-      text-decoration: none;
-    }
-
-    .box {
-      background: #1a1a1a;
+    .btn {
+      display: block;
+      margin: 20px auto;
       padding: 15px;
-      margin-bottom: 20px;
+      width: 200px;
+      background: #1a1a1a;
       border-radius: 10px;
-    }
-
-    .item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #111;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-    }
-
-    .id {
-      color: #22c55e;
-      font-weight: bold;
-    }
-
-    button {
-      background: #a855f7;
-      border: none;
-      padding: 6px 10px;
+      text-decoration: none;
       color: white;
-      border-radius: 5px;
-      cursor: pointer;
     }
 
-    button:hover {
-      background: #9333ea;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 0.8em;
-      color: #777;
+    .btn:hover {
+      background: #333;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>⚡ JJS Skill Builder</h1>
-  </header>
+  <h1>⚡ JJS Skill Builder</h1>
 
-  <main>
-
-    <div class="box">
-      <h2>🎧 Sound IDs</h2>
-
-      <div class="item">
-        <span class="id">lorem123</span>
-        <button onclick="copyID(this)">Copiar</button>
-      </div>
-
-      <div class="item">
-        <span class="id">ipsum456</span>
-        <button onclick="copyID(this)">Copiar</button>
-      </div>
-
-    </div>
-
-    <div class="box">
-      <h2>🖼️ Image IDs</h2>
-
-      <div class="item">
-        <span class="id">dolor789</span>
-        <button onclick="copyID(this)">Copiar</button>
-      </div>
-
-    </div>
-
-    <div class="box">
-      <h2>🧩 Mesh IDs</h2>
-
-      <div class="item">
-        <span class="id">sit000</span>
-        <button onclick="copyID(this)">Copiar</button>
-      </div>
-
-    </div>
-
-  </main>
-
-  <footer>
-    <p>Feito pra JJS builders ⚔️</p>
-  </footer>
-
-  <script>
-    function copyID(button) {
-      const idText = button.parentElement.querySelector(".id").innerText;
-
-      navigator.clipboard.writeText(idText);
-
-      button.innerText = "Copiado!";
-      
-      setTimeout(() => {
-        button.innerText = "Copiar";
-      }, 1500);
-    }
-  </script>
+  <a class="btn" href="sounds.html">🎧 Sounds</a>
+  <a class="btn" href="images.html">🖼️ Images</a>
+  <a class="btn" href="meshes.html">🧩 Meshes</a>
 
 </body>
 </html>
